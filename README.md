@@ -21,3 +21,19 @@ $data = Import-Csv ./custom-assets-report-public.csv
 $columns = ($data | select Firma, ... )
 echo $columns
 ```
+
+
+## Aufgabe 3: Zeilen filtern und exportieren
+Nutze das Schlüsselwort `where` um die Liste nach Laptops zu filtern.
+```
+$laptops = ($columns | where { $_.Kategorie -EQ "Laptop" } )
+echo "Gefundene Laptops: " $laptops.count
+```
+Sortiere die so erstellte Liste nach der Spalte Modell. Lies Dir ggf. die Doku für das CmdLet `Sort-Object` durch.
+```
+$sorted = ($laptops | Sort-Object -Property ...)
+```
+Mit dem CmdLet `Export-Csv` kannst Du dann die erzeugte Liste wieder exportieren. Erstelle bitte jeweils eine sortierte Tabellle für Laptops und Smartphones.
+
+## Aufgabe 4: Shell-Skript im main-Branch bereitstellen
+Wirf nochmal einen Blick in das [Git Cheat Sheet](https://training.github.com/downloads/de/github-git-cheat-sheet/) und pushe zunächst Deine Änderungen in Deinen eigenen Branch und dann merge Deine Änderungen mit dem Remote main Branch.
